@@ -1,0 +1,53 @@
+<div class="calculator" [class.dark]="isDark" role="application" aria-label="Calculadora">
+  <div class="theme-toggle" role="group" aria-label="Selector de tema">
+    <span class="theme-icon" aria-hidden="true">☀️</span>
+    <label class="switch">
+      <input 
+        type="checkbox" 
+        [checked]="isDark" 
+        (change)="toggleTheme()" 
+        role="switch"
+        [attr.aria-checked]="isDark"
+        aria-label="Cambiar a modo oscuro" />
+      <span class="slider round"></span>
+    </label>
+    <span class="theme-icon" aria-hidden="true">🌙</span>
+  </div>
+  <input 
+    class="display" 
+    [class.updated]="displayUpdated"
+    type="text" 
+    [value]="display" 
+    readonly
+    aria-label="Pantalla de resultados"
+    aria-live="polite"
+    aria-atomic="true">
+  <div class="row" role="group" aria-label="Números 7, 8, 9 y división">
+    <button (click)="pressKey('7')" (mouseenter)="speak('Siete')" aria-label="Siete">7</button>
+    <button (click)="pressKey('8')" (mouseenter)="speak('Ocho')" aria-label="Ocho">8</button>
+    <button (click)="pressKey('9')" (mouseenter)="speak('Nueve')" aria-label="Nueve">9</button>
+    <button (click)="pressKey('/')" (mouseenter)="speak('Dividir')" aria-label="Dividir">/</button>
+  </div>
+  <div class="row" role="group" aria-label="Números 4, 5, 6 y multiplicación">
+    <button (click)="pressKey('4')" (mouseenter)="speak('Cuatro')" aria-label="Cuatro">4</button>
+    <button (click)="pressKey('5')" (mouseenter)="speak('Cinco')" aria-label="Cinco">5</button>
+    <button (click)="pressKey('6')" (mouseenter)="speak('Seis')" aria-label="Seis">6</button>
+    <button (click)="pressKey('*')" (mouseenter)="speak('Multiplicar')" aria-label="Multiplicar">*</button>
+  </div>
+  <div class="row" role="group" aria-label="Números 1, 2, 3 y resta">
+    <button (click)="pressKey('1')" (mouseenter)="speak('Uno')" aria-label="Uno">1</button>
+    <button (click)="pressKey('2')" (mouseenter)="speak('Dos')" aria-label="Dos">2</button>
+    <button (click)="pressKey('3')" (mouseenter)="speak('Tres')" aria-label="Tres">3</button>
+    <button (click)="pressKey('-')" (mouseenter)="speak('Restar')" aria-label="Restar">-</button>
+  </div>
+  <div class="row" role="group" aria-label="Cero, punto decimal, igual y suma">
+    <button (click)="pressKey('0')" (mouseenter)="speak('Cero')" aria-label="Cero">0</button>
+    <button (click)="pressKey('.')" (mouseenter)="speak('Punto decimal')" aria-label="Punto decimal">.</button>
+    <button (click)="pressKey('=')" (mouseenter)="speak('Igual')" aria-label="Igual, calcular resultado">=</button>
+    <button (click)="pressKey('+')" (mouseenter)="speak('Sumar')" aria-label="Sumar">+</button>
+  </div>
+  <div class="row actions-row" role="group" aria-label="Acciones de limpieza">
+    <button class="clear-all" (click)="clearAll()" (mouseenter)="speak('Limpiar todo')" aria-label="Limpiar todo">C</button>
+    <button class="backspace" (click)="backspace()" (mouseenter)="speak('Borrar')" aria-label="Borrar último carácter">⌫</button>
+  </div>
+</div>
